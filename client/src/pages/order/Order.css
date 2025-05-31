@@ -1,0 +1,218 @@
+.OrderMainContainer {
+  padding: 1rem 1.5rem;
+  width: 100%;
+  height: 100vh;
+}
+
+.OrderSearch {
+  margin-top: 1rem;
+}
+
+.OrderType {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.OrderTypeItem {
+  border: var(--inputBorder) 1px solid;
+  border-radius: 0.25rem;
+  padding: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 4rem;
+  max-width: 3.8rem;
+  min-width: 3.8rem;
+}
+
+.OrderTypeName {
+  font-size: 0.65rem;
+}
+
+.SelectedCategory {
+  background-color: var(--inputBorder);
+  color: white !important;
+}
+.SelectedCategory svg {
+  fill: white !important;
+}
+
+.OrderContainerHeader {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.OrderContainerBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-gap: 1rem;
+  max-height: calc(100vh - 19rem);
+  overflow: auto;
+}
+
+.OrderItem {
+  display: flex;
+  flex-direction: column;
+  background: #d9d9d9;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.OrderItemImage {
+  position: relative;
+}
+
+.OrderItemImage::after {
+  box-shadow: -31px -121px 45px -87px rgba(255, 255, 255, 0.75) inset;
+  -webkit-box-shadow: -31px -121px 45px -87px rgba(255, 255, 255, 0.75) inset;
+  -moz-box-shadow: -31px -121px 45px -87px rgba(255, 255, 255, 0.75) inset;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.OrderItem_name {
+  font-weight: 500;
+}
+
+.OrderItemImage img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.OrderItemDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+.OrderItemManageButton {
+  background: none;
+  border: none;
+}
+
+.OrderInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.OrderItem_price {
+  font-size: 0.8rem;
+}
+
+.FooterContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 4rem;
+  left: 0;
+}
+.PlacedOrderContainer {
+  margin-top: 1rem;
+}
+.PlacedOrderItem {
+  display: flex;
+}
+.PlacedOrderItemDetails {
+  flex: 1;
+  padding-left: 0.5rem;
+}
+.PlacedOrderItemActions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.PlacedOrderItemManage {
+  display: flex;
+  justify-content: flex-end;
+}
+.OrderItemManage {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.p-inputswitch {
+  width: 100%;
+  height: 4rem;
+}
+.p-inputswitch-input {
+  width: 100%;
+}
+.p-inputswitch.p-highlight .p-inputswitch-slider:before {
+  transform: translateX(90%);
+}
+.p-inputswitch:not(.p-disabled):has(.p-inputswitch-input:hover).p-highlight
+  .p-inputswitch-slider {
+  background: #b7bcc5;
+}
+.p-inputswitch .p-inputswitch-slider:before {
+  background: #ffffff;
+  width: 50%;
+  height: 3rem;
+  left: 0.5rem;
+  margin-top: -0.625rem;
+  border-radius: 1.5rem;
+  transition-duration: 0.2s;
+  top: 1rem;
+}
+.PlacedOrderType {
+  position: relative;
+  margin-top: 1rem;
+}
+.PlacedOrderType::before {
+      content: "Dine In";
+    position: absolute;
+    left: 3.5rem;
+    font-size: 1.2rem;
+    z-index: 1;
+    font-weight: 400;
+    top: 1.2rem;
+}
+.PlacedOrderType::after {
+  content: "Take Away";
+  position: absolute;
+  right: 2.5rem;
+  font-size: 1.2rem;
+  z-index: 1;
+  font-weight: 400;
+  top: 1.2rem;
+}
+.p-inputswitch-slider{
+  background: #b7bcc5 !important;
+}
+.PlacedOrderInfo{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.PlacedInfoDetail{
+  display: flex;
+  justify-content: space-between;
+}
+.PlacedInfoDetail{
+  font-size: 0.8rem;
+  color: dimgray;
+}
+.GrandTotal{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}

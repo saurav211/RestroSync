@@ -1,0 +1,93 @@
+.p-card-body{
+    width: 100%;
+}
+
+.p-card .p-card-content{
+    padding: 0;
+}
+
+.table-page-container {
+    padding: 32px;
+}
+
+.table-page-title {
+    margin-bottom: 24px;
+}
+
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.table-card {
+    min-width: 120px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.table-delete-btn {
+    position: absolute !important;
+    top: 4px;
+    right: 4px;
+    color: #d32f2f !important;
+}
+
+.table-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-card-label {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.table-card-number {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+.table-card-chair {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.table-chair-info {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    font-size: 0.9rem;
+    color: #111;
+}
+
+.table-add-card {
+    min-width: 120px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #bbb;
+    cursor: pointer;
+}
+
+.table-dialog-content {
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-add-card .p-card-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
