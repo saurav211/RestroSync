@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import Order from './pages/order/order';
+import Order from './pages/order/Order';
 import TablePage from './pages/Table/Table';
 import OrderLine from './pages/OrderLine/OrderLine';
 import Dashboard from './pages/dashboard/Dashboard';
