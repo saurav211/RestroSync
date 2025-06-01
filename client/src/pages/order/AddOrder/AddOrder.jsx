@@ -3,7 +3,7 @@ import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { BurgerSvg } from '../svg/burgerSvg';
+import { BurgerSvg } from '../svg/BurgerSvg';
 import { PizzaSvg } from '../svg/PizzaSvg';
 import { DrinkSvg } from '../svg/DrinkSvg';
 import { FrenchfriesSvg } from '../svg/FrenchfriesSvg';
