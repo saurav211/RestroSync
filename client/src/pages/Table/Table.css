@@ -112,6 +112,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    padding-top: 0.5rem;
 }
 .p-card-body{
     padding: 0

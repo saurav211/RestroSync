@@ -21,7 +21,7 @@ const TableDashboard = () => {
         {tables.map((table, idx) => (
           <Card
             key={table._id}
-            className={"table-card-dashboard" + (table.booked ? "booked" : "")}
+            className={"table-card-dashboard" + (table.booked ? " booked" : "")}
           >
             <div className="table-card-header">
               <span className="table-card-label">{table.name ? table.name : "Table"}</span>
