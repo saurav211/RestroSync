@@ -3,6 +3,7 @@ import App from './App';
 import Order from './pages/order/order';
 import TablePage from './pages/Table/Table';
 import OrderLine from './pages/OrderLine/OrderLine';
+import Dashboard from './pages/dashboard/Dashboard';
 
 
 export const router = createBrowserRouter([
@@ -25,5 +26,10 @@ export const router = createBrowserRouter([
         path: '/order-line',
         element: <OrderLine />,
         errorElement: <div>Order line page not found</div>
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard />,
+        errorElement: <div>Dashboard page not found</div>
     }
 ]);

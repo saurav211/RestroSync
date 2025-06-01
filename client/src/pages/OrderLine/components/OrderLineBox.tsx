@@ -141,14 +141,6 @@ const OrderLineBox: React.FC<OrderLineBoxProps & { orderIndex?: number; timeTake
           )}
         </span>
       </div>
-      {status === "processing" && onComplete && (
-        <button
-          className="order-complete-btn"
-          onClick={onComplete}
-        >
-          Mark as Done
-        </button>
-      )}
     </>
   );
 };

@@ -1,0 +1,114 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.analytics-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.analytics-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 22%;
+}
+
+.analytics-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.analytics-data h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.analytics-data p {
+  margin: 0;
+  color: #888;
+}
+
+.charts-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.order-summary, .revenue-chart, .tables-status {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 32%;
+}
+
+.chef-orders {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chef-orders table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.chef-orders th, .chef-orders td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.chef-orders th {
+  background-color: #f4f4f4;
+}
+
+.order-summary-container {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.order-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.order-summary-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.order-summary-card {
+  flex: 1;
+  margin: 0 10px;
+  padding: 15px;
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary-card h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.order-summary-card p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
