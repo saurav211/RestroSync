@@ -60,14 +60,21 @@
   margin-right: auto;
 }
 
-.orderline-card.processing {
+.orderline-card.Processing {
   background: #FFE3BC;
 }
 
-.orderline-card.done {
+.orderline-card.Done {
   background: #b9f8c9;
 }
 
+.orderline-card.Served {
+  background: #b9f8c9;
+}
+
+.orderline-card.not_picked_up {
+  background: #C2D4D9;
+}
 .orderline-card.not_picked_up {
   background: #C2D4D9;
 }

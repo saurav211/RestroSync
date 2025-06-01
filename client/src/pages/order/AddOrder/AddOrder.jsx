@@ -8,7 +8,7 @@ import { PizzaSvg } from '../svg/PizzaSvg';
 import { DrinkSvg } from '../svg/DrinkSvg';
 import { FrenchfriesSvg } from '../svg/FrenchfriesSvg';
 import { VeggiesSvg } from '../svg/VeggiesSvg';
-import { pizza } from '../svg/pizza';
+import { getMenuItemsByCategoryApi } from "../orderApi";
 import Greet from '../Greet/Greet';
 import OrderItem from '../OrderItem/OrderItem';
 
@@ -33,44 +33,15 @@ export default function AddOrder({selectStatus, setSelectedOrder}) {
 
   async function getOrder(itemName) {
     setOrderItems([]);
-    if (itemName === "Pizza") {
-      let pizzaItems = [
-        {
-          id: 1,
-          name: "Margherita",
-          price: 10,
-          order: 0,
-          category: "Pizza",
-          image: pizza,
-        },
-        {
-          id: 2,
-          name: "Pepperoni",
-          price: 12,
-          order: 0,
-          image: pizza,
-          category: "Pizza",
-        },
-        {
-          id: 3,
-          name: "Veggie",
-          price: 11,
-          order: 0,
-          image: pizza,
-          category: "Pizza",
-        },
-        {
-          id: 4,
-          name: "Hawaiian",
-          price: 13,
-          order: 0,
-          image: pizza,
-          category: "Pizza",
-        },
-      ];
-      setOrderItems(pizzaItems);
-
-    }
+    const res = await getMenuItemsByCategoryApi(itemName);
+    setOrderItems(res.data.map(item => ({
+      id: item._id,
+      name: item.name,
+      price: item.price,
+      order: 0,
+      category: item.category,
+      image: item.image || null
+    })));
   }
 
   function addOrder(item) {

@@ -13,6 +13,7 @@ const TablePage = () => {
   const [tables, setTables] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
   const [newTableSeats, setNewTableSeats] = useState(2);
+  const [newTableName, setNewTableName] = useState("");
 
   // Fetch tables from backend
   useEffect(() => {
@@ -25,14 +26,20 @@ const TablePage = () => {
   };
 
   const handleAddTable = async () => {
-    await api.post("/api/table", { numberOfSeats: newTableSeats });
+    await api.post("/api/table", { numberOfSeats: newTableSeats, name: newTableName });
     setShowDialog(false);
     setNewTableSeats(2);
+    setNewTableName("");
     fetchTables();
   };
 
   const handleDeleteTable = async (id) => {
     await api.delete(`/api/table/${id}`);
+    fetchTables();
+  };
+
+  const handleReserveTable = async (id, reserved) => {
+    await api.patch(`/api/table/${id}/reservation`, { reserved });
     fetchTables();
   };
 
@@ -59,7 +66,7 @@ const TablePage = () => {
               tooltipOptions={{ position: "left" }}
             />
             <div className="table-card-header">
-              <span className="table-card-label">Table</span>
+              <span className="table-card-label">{table.name ? table.name : "Table"}</span>
               <span className="table-card-number">
                 {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
               </span>
@@ -70,6 +77,25 @@ const TablePage = () => {
                     {table.numberOfSeats}{" "}
                 </div>
             </div>
+            <div className={"table-card-status " + (table.reserved ? "reserved" : table.booked ? "booked" : "available") }>
+              {table.reserved ? "Reserved" : table.booked ? "Booked" : "Available"}
+            </div>
+            {!table.reserved && (
+              <Button
+                label="Reserve"
+                className="p-button-sm p-button-warning"
+                onClick={() => handleReserveTable(table._id, true)}
+                style={{ marginRight: 8 }}
+              />
+            )}
+            {table.reserved && (
+              <Button
+                label="Unreserve"
+                className="p-button-sm p-button-secondary"
+                onClick={() => handleReserveTable(table._id, false)}
+                style={{ marginRight: 8 }}
+              />
+            )}
           </Card>
         ))}
         {/* Add Table Card */}
@@ -110,6 +136,13 @@ const TablePage = () => {
             onChange={(e) => setNewTableSeats(e.value)}
             style={{ width: "100%" }}
             placeholder="Select chairs"
+          />
+          <label>Table Name (optional)</label>
+          <InputText
+            value={newTableName}
+            onChange={e => setNewTableName(e.target.value)}
+            placeholder="Enter table name (optional)"
+            style={{ width: "100%", marginBottom: 12 }}
           />
         </div>
       </Dialog>

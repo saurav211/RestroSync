@@ -24,6 +24,6 @@ export const router = createBrowserRouter([
     {
         path: '/order-line',
         element: <OrderLine />,
-        errorElement: <div>Order Line page not found</div>
+        errorElement: <div>Order line page not found</div>
     }
 ]);

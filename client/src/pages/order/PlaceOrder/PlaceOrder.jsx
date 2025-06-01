@@ -7,6 +7,7 @@ import { InputSwitch } from "primereact/inputswitch";
 import PlacedOrderItem from "./PlacedOrderItem";
 import { useState, useRef } from "react";
 import { Dialog } from "primereact/dialog";
+import { placeOrderApi } from "../orderApi";
 
 export default function PlaceOrder({ selectedOrder, setSelectedOrder }) {
     const [checked, setChecked] = useState(false);
@@ -23,7 +24,7 @@ export default function PlaceOrder({ selectedOrder, setSelectedOrder }) {
         phone: "",
     });
 
-    const handlePlaceOrder = () => {
+    const handlePlaceOrder = async () => {
         const required = ["name", "phone"];
         if (checked) required.push("address");
         const missing = required.filter((f) => !userDetails[f]);
@@ -33,7 +34,20 @@ export default function PlaceOrder({ selectedOrder, setSelectedOrder }) {
             return;
         }
         // Place order logic here
-        alert("Order placed!");
+        try {
+            const orderType = checked ? "Take Away" : "Dine In";
+            const items = selectedOrder.map(item => ({ name: item.name, quantity: item.order, price: item.price }));
+            const res = await placeOrderApi({
+                items,
+                type: orderType,
+                ...userDetails,
+                estimatedMinutes: 15 // or calculate based on items
+            });
+            alert("Order placed!");
+            setSelectedOrder([]);
+        } catch (err) {
+            alert("Order failed: " + (err.response?.data?.error || err.message));
+        }
     };
 
     const handleDialogSubmit = () => {
