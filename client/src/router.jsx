@@ -1,5 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Order from './pages/order/Order';
 import TablePage from './pages/Table/Table';
 import OrderLine from './pages/OrderLine/OrderLine';
@@ -9,7 +8,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <App />,
+        element: <Navigate to="/dashboard" replace />,
         errorElement: <div>Page not found</div>
     },
     {
