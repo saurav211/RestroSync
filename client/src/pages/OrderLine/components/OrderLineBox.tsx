@@ -114,9 +114,8 @@ const OrderLineBox: React.FC<OrderLineBoxProps & { orderIndex?: number; timeTake
         </span>
       </div>
       <div className="orderline-items-box">
-        <div className="orderline-items-title">{items[0]}</div>
         <ul className="orderline-items-list">
-          {items.slice(1).map((item, idx) => (
+          {items.map((item, idx) => (
             <li key={idx}>{item}</li>
           ))}
         </ul>

@@ -3,6 +3,7 @@ import axios from '../../config/axios';
 import './Dashboard.css';
 import OrderSummaryChart from './OrderSummaryChart';
 import RevenueChart from './RevenueChart';
+import TableDashboard from '../Table/TableDashboard';
 
 const Dashboard = () => {
   const [analytics, setAnalytics] = useState({
@@ -64,7 +65,9 @@ const Dashboard = () => {
         </div>
         <div className="tables-status">
           <h4>Tables</h4>
-          <p>Table Status Placeholder</p>
+          <div>
+            <TableDashboard />
+          </div>
         </div>
       </div>
       <div className="chef-orders">
