@@ -4,6 +4,7 @@ import './Dashboard.css';
 import OrderSummaryChart from './OrderSummaryChart';
 import RevenueChart from './RevenueChart';
 import TableDashboard from '../Table/TableDashboard';
+import Sidebar from '../sidebar/Sidebar';
 
 const Dashboard = () => {
   const [analytics, setAnalytics] = useState({
@@ -26,8 +27,9 @@ const Dashboard = () => {
     fetchAnalytics();
   }, []);
 
-  return (
-    <div className="dashboard-container">
+  return (<div style={{ display: 'flex' }}>
+    <Sidebar  />
+    <div className="dashboard-container" style={{ flex: 1 }}>
       <div className="analytics-section">
         <div className="analytics-card">
           <div className="analytics-icon">🍳</div>
@@ -100,6 +102,7 @@ const Dashboard = () => {
         </table>
       </div>
     </div>
+  </div>
   );
 };
 
