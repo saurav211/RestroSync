@@ -135,6 +135,12 @@ exports.getAllOrdersWithAutoComplete = async () => {
         if (order.type === 'Dine In' && order.tableId) {
           await Table.findByIdAndUpdate(order.tableId, { booked: false });
         }
+        // Remove order from chef's processing list
+        if (order.chefId) {
+          await Chef.findByIdAndUpdate(order.chefId, {
+            $pull: { ordersProcessing: { orderId: order._id } }
+          });
+        }
       }
     }
     if (shouldUpdate) {
