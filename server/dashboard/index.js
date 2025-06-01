@@ -21,4 +21,14 @@ router.get('/order-summary', async (req, res) => {
   }
 });
 
+router.get('/revenue', async (req, res) => {
+  try {
+    const { period } = req.query;
+    const stats = await dashboardService.getRevenueStats(period || 'day');
+    res.json(stats);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 module.exports = router;

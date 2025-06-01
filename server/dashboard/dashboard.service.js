@@ -63,3 +63,55 @@ exports.getOrderSummary = async (filter) => {
 
   return summary;
 };
+
+exports.getRevenueStats = async (period = 'day') => {
+  const now = new Date();
+  let startDate, groupBy, dateFormat;
+
+  if (period === 'day') {
+    // For daily: last 7 days (Mon-Sun)
+    const dayOfWeek = now.getDay(); // 0 (Sun) - 6 (Sat)
+    // Get last Monday
+    const lastMonday = new Date(now);
+    lastMonday.setDate(now.getDate() - ((dayOfWeek + 6) % 7));
+    lastMonday.setHours(0, 0, 0, 0);
+    startDate = lastMonday;
+    groupBy = { $dateToString: { format: '%Y-%m-%d', date: '$placedAt' } };
+    dateFormat = 'YYYY-MM-DD';
+  } else if (period === 'week') {
+    // For weekly: last 4 weeks
+    const fourWeeksAgo = new Date(now);
+    fourWeeksAgo.setDate(now.getDate() - 28);
+    fourWeeksAgo.setHours(0, 0, 0, 0);
+    startDate = fourWeeksAgo;
+    groupBy = { $isoWeek: '$placedAt' };
+    dateFormat = 'YYYY-[W]WW';
+  } else if (period === 'month') {
+    // For monthly: last 12 months
+    const twelveMonthsAgo = new Date(now.getFullYear(), now.getMonth() - 11, 1);
+    startDate = twelveMonthsAgo;
+    groupBy = { $dateToString: { format: '%Y-%m', date: '$placedAt' } };
+    dateFormat = 'YYYY-MM';
+  } else {
+    throw new Error('Invalid period type');
+  }
+
+  // Aggregate revenue by group
+  const revenueData = await Order.aggregate([
+    { $match: { placedAt: { $gte: startDate } } },
+    { $unwind: '$items' },
+    {
+      $group: {
+        _id: groupBy,
+        total: { $sum: { $multiply: ['$items.price', '$items.quantity'] } },
+      },
+    },
+    { $sort: { _id: 1 } },
+  ]);
+
+  // Format result for chart
+  return revenueData.map(item => ({
+    label: item._id,
+    total: item.total,
+  }));
+};

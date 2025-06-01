@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../config/axios';
 import './Dashboard.css';
 import OrderSummaryChart from './OrderSummaryChart';
+import RevenueChart from './RevenueChart';
 
 const Dashboard = () => {
   const [analytics, setAnalytics] = useState({
@@ -59,8 +60,7 @@ const Dashboard = () => {
       <div className="charts-section">
         <OrderSummaryChart />
         <div className="revenue-chart">
-          <h4>Revenue</h4>
-          <p>Graph Placeholder</p>
+          <RevenueChart />
         </div>
         <div className="tables-status">
           <h4>Tables</h4>
