@@ -13,6 +13,7 @@ const Dashboard = () => {
     totalOrders: 0,
     totalClients: 0,
   });
+  const [chefs, setChefs] = useState([]);
 
   useEffect(() => {
     const fetchAnalytics = async () => {
@@ -24,7 +25,17 @@ const Dashboard = () => {
       }
     };
 
+    const fetchChefs = async () => {
+      try {
+        const res = await axios.get('/api/chef');
+        setChefs(res.data);
+      } catch (error) {
+        console.error('Error fetching chefs:', error);
+      }
+    };
+
     fetchAnalytics();
+    fetchChefs();
   }, []);
 
   return (<div style={{ display: 'flex' }}>
@@ -82,22 +93,12 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Manesh</td>
-              <td>03</td>
-            </tr>
-            <tr>
-              <td>Pritam</td>
-              <td>07</td>
-            </tr>
-            <tr>
-              <td>Yash</td>
-              <td>05</td>
-            </tr>
-            <tr>
-              <td>Tenzen</td>
-              <td>08</td>
-            </tr>
+            {chefs.map((chef) => (
+              <tr key={chef._id}>
+                <td>{chef.name}</td>
+                <td>{chef.ordersProcessing ? chef.ordersProcessing.length.toString().padStart(2, '0') : '00'}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
